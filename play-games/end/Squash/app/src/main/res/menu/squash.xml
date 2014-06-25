@@ -1,0 +1,28 @@
+ <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_achievements"
+        android:showAsAction="never"
+        android:title="@string/menu_achievements" />
+    
+       <item
+        android:id="@+id/menu_leaderboard"
+        android:showAsAction="never"
+        android:title="@string/menu_leaderboard" />
+
+     <item
+         android:id="@+id/menu_send_gift"
+         android:showAsAction="never"
+         android:title="@string/menu_send_gift" />
+
+     <item
+         android:id="@+id/menu_gift_inbox"
+         android:showAsAction="never"
+         android:title="@string/menu_gift_inbox" />
+
+       <item
+        android:id="@+id/menu_reset"
+        android:showAsAction="never"
+        android:title="@string/menu_reset" />
+       
+</menu>

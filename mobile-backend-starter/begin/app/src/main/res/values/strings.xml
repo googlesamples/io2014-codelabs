@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Cloud Guest Book</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="switch_account">Switch Account</string>
+    <string name="view_intro">View Intro</string>
+    <string name="skip_intro">Skip intro next time</string>
+    <string name="announce_success">YOU HAVE JOINED</string>
+    <string name="announce_fail">CONNECTION FAILED</string>
+    <string name="send">Send</string>
+    <string name="send_message">sendMessage</string>
+    <string name="empty_string"></string>
+    <string name="no_messages">No messages yet</string>
+    <string name="transform_image">Transform Image</string>
+
+    <string name="intro_1_title">Guest Book Sample App</string>
+    <string name="intro_1_dscrp">Welcome to the Mobile Backend Starter sample guestbook Android app. This simple app allows users to send messages to other instances of the app running on Android or iOS devices. Play with this application to get started.  There is no additional backend coding required.</string>
+    <string name="intro_2_title">Mobile Backend Starter</string>
+    <string name="intro_2_dscrp">The guestbook app uses the Mobile Backend Starter for messaging and user authentication. The backend also provides a cloud datastore, with public and private objects, and a subscription service to give your apps real time interactivity.</string>
+    <string name="intro_3_title">Now it’s your turn</string>
+    <string name="intro_3_dscrp">Play around with this app and the source code to become familiar with the Mobile Backend Starter. When you are ready, replace the Guestbook sample code with your own app or game code.</string>
+</resources>

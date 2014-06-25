@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:scaleType="fitXY"
+            android:id="@+id/button_play"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/ic_action_play" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/artist_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:singleLine="true"
+                android:maxLength="20"
+                android:ellipsize="marquee"
+                android:scrollHorizontally="true"
+                android:text="test"/>
+            <TextView
+                android:id="@+id/song_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:textSize="18sp"
+                android:singleLine="true"
+                android:maxLength="20"
+                android:ellipsize="marquee"
+                android:scrollHorizontally="true"
+                android:text="song name goes here"/>
+            </LinearLayout>
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:scaleType="fitXY"
+            android:id="@+id/button_fullscreen"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/ic_action_full_screen" />
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:gravity="center">
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="fitXY"
+            android:id="@+id/button_previous"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/ic_action_previous" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"
+            android:layout_gravity="center" />
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="fitXY"
+            android:id="@+id/button_next"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/ic_action_next" />
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/playlist_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+        <ListView
+            android:id="@+id/playlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:choiceMode="singleChoice"
+            android:fontFamily="sans-serif-light"></ListView>
+    </FrameLayout>
+</LinearLayout>

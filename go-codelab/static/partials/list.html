@@ -1,0 +1,17 @@
+<h1 class='charcoal rounded-box'>{{list.Name}}</h1>
+
+<ul class='grey rounded-box'>
+    <li ng-repeat='t in tasks | orderBy:["Done", "Time"]' ng-class='{done: t.Done}' ng-click='toggle(t)'>
+        <span class='checkbox'></span>{{t.Text}}
+    </li>
+</ul>
+
+<form ng-submit='addTask()' class='rounded-box grey'>
+    <input type='text' class='rounded-box' placeholder='add new todo here' ng-model='newTask.Text'>
+    <input type='submit' class='white rounded-box' ng-disabled='working' value='+'>
+</form>
+<div class='rounded-box grey'>
+    <a ng-click='delete()' class='white rounded-box'>Delete</a>
+</div>
+
+<a href='/' class='white rounded-box'>Back home</a>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+ <servlet>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+  <init-param>
+   <param-name>services</param-name>
+   <param-value>com.google.cloud.backend.spi.BlobEndpoint,com.google.cloud.backend.spi.EndpointV1</param-value>
+  </init-param>
+ </servlet>
+
+ <servlet-mapping>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <url-pattern>/_ah/spi/*</url-pattern>
+ </servlet-mapping>
+
+ <servlet>
+    <servlet-name>ProspectiveSearchServlet</servlet-name>
+    <servlet-class>
+      com.google.cloud.backend.spi.ProspectiveSearchServlet
+    </servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ProspectiveSearchServlet</servlet-name>
+    <url-pattern>/_ah/prospective_search</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+     <servlet-name>ConfigurationServlet</servlet-name>
+     <servlet-class>
+       com.google.cloud.backend.config.ConfigurationServlet
+     </servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+     <servlet-name>ConfigurationServlet</servlet-name>
+     <url-pattern>/admin/cconf</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>WorkerServlet</servlet-name>
+    <servlet-class>com.google.cloud.backend.pushnotification.WorkerServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>WorkerServlet</servlet-name>
+    <url-pattern>/_ah/start</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>PushFeedbackProcessingServlet</servlet-name>
+    <servlet-class>com.google.cloud.backend.pushnotification.PushFeedbackProcessingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PushFeedbackProcessingServlet</servlet-name>
+    <url-pattern>/admin/push/feedbackservice/process</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>NotificationCleanupServlet</servlet-name>
+    <servlet-class>com.google.cloud.backend.pushnotification.NotificationCleanupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NotificationCleanupServlet</servlet-name>
+    <url-pattern>/admin/push/notifications/cleanup</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>DeviceCleanupServlet</servlet-name>
+    <servlet-class>com.google.cloud.backend.pushnotification.DeviceCleanupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeviceCleanupServlet</servlet-name>
+    <url-pattern>/admin/push/device/cleanup</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>SubscriptionRemovalServlet</servlet-name>
+    <servlet-class>com.google.cloud.backend.spi.SubscriptionRemovalServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SubscriptionRemovalServlet</servlet-name>
+    <url-pattern>/admin/push/devicesubscription/delete</url-pattern>
+  </servlet-mapping>
+
+  <security-constraint>
+    <web-resource-collection>
+      <url-pattern>/admin/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>

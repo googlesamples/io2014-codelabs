@@ -1,0 +1,32 @@
+canvas.incomingPhoto {
+  display: inline-block;
+  margin: 10px;
+  width: 200px;
+  height: 150px;
+  border: 1px solid #ccc;
+}
+
+canvas#photo {
+  height: 240px;
+  width: 320px;
+  border: 1px solid #ccc;
+}
+
+div#buttons {
+  border-bottom: 1px solid #ccc;
+  margin: 0 0 20px 0;
+  padding: 0 0 20px 0;
+}
+
+div#videoCanvas {
+  height: 240px;
+  margin: 0 0 20px 0;
+}
+
+video#camera {
+  width: 320px;
+  min-height: 240px;
+  float: left;
+  margin: 0 20px 0 0;
+  border: 1px solid #aaa;
+}

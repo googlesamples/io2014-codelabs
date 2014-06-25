@@ -1,0 +1,15 @@
+{
+  "name": "PolymerMobileCodelab",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+  ],
+  "author": "",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#master",
+    "core-elements": "Polymer/core-elements#master",
+    "paper-elements": "Polymer/paper-elements",
+    "font-roboto": "Polymer/font-roboto"
+  }
+}

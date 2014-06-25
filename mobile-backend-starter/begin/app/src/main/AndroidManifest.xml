@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.google.cloud.backend">
+
+  <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="16"/>
+
+  <permission android:name="com.google.cloud.backend.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="com.google.cloud.backend.permission.C2D_MESSAGE"/>
+  <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+  <uses-permission android:name="android.permission.WAKE_LOCK"/>
+  <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+  <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+
+  <application android:allowBackup="true" android:icon="@drawable/ic_launcher_guestbook" android:label="@string/app_name" android:theme="@style/AppTheme">
+    <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:name=".sample.guestbook.GuestbookActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity android:name=".sample.guestbook.IntroductionActivity" android:parentActivityName=".sample.guestbook.GuestbookActivity" android:screenOrientation="portrait">
+      <!-- If you use the Android SDK 15 or less, the attributes android:parentActivityName doesn't work -->
+      <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.google.cloud.backend.sample.guestbook.GuestbookActivity"/>
+    </activity>
+
+    <!--
+     You can replace the android:name attribute above with one of the the following
+     lines to choose a sample:
+
+                android:name="com.google.cloud.backend.sample.guestbook.GuestbookActivity"
+                android:name="com.google.cloud.backend.sample.socialtalk.SocialTalkActivity"
+    -->
+
+  </application>
+
+</manifest>
+

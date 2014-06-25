@@ -1,0 +1,69 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".IntroductionActivity" >
+
+    <RelativeLayout
+        android:id="@+id/intro_3_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="40dp" >
+        <TextView
+            android:id="@+id/intro_3_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/intro_3_title"
+            style="@style/IntroTitleText" />
+
+        <TextView
+            android:id="@+id/intro_3_dscrp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/intro_3_title"
+            android:text="@string/intro_3_dscrp"
+            style="@style/IntroDscrpText" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_dots_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="50dp"
+        android:src="@drawable/img_dots_3" />
+
+    <ImageView
+        android:id="@+id/intro_3_prev_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="30dp"
+        android:padding="20dp"
+        android:src="@drawable/ic_left_arrow" />
+
+    <ImageView
+        android:id="@+id/intro_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/img_done" />
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/intro_3_text"
+        android:layout_alignRight="@id/intro_3_text"
+        android:text="@string/skip_intro"
+        android:textColor="@color/light_grey" />
+
+</RelativeLayout>

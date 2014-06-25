@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jarek &amp; Shawn Music</string>
+    <string name="title_activity_main">@string/app_name</string>
+    <string name="artist_name_dual_core">Dual Core</string>
+    <string name="artist_info_dual_core">Brought together by the power of the internet (and perhaps a touch of musical providence), California based computer programmer / rapper int eighty and English web designer / music producer c64 have been rocking the more studious side of the hip hop underground since 2007.</string>
+    <string name="artist_web_url_dual_core">http://jarekandshawnmusic.com/artist/DualCore</string>
+</resources>

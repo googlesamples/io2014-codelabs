@@ -1,0 +1,19 @@
+name: polymer_and_dart
+description: Sample app built with the polymer.dart package
+environment:
+  sdk: '>=1.2.0 <2.0.0'
+dependencies:
+  polymer: '>=0.10.0 <0.11.0'
+dev_dependencies:
+  unittest: '>=0.10.0 <0.11.0'
+transformers:
+- polymer:
+    entry_points:
+    - web/begin/index.html
+    - web/step2/index.html
+    - web/step3/index.html
+    - web/step4/index.html
+    - web/step5/index.html
+    - web/step6/index.html
+    - web/step7/index.html
+    - web/end/index.html

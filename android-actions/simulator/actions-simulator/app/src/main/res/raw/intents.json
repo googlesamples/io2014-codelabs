@@ -1,0 +1,22 @@
+[
+    {
+        "mActionType":"PLAY_ARTIST",
+        "mAction":"android.media.action.MEDIA_PLAY_FROM_SEARCH",
+        "mActionExtras":[
+            {
+                "first":"query",
+                "second":"Nerdcore"
+            }
+        ]
+    },
+    {
+        "mActionType":"PLAY_GENRE",
+        "mAction":"android.media.action.MEDIA_PLAY_FROM_SEARCH",
+        "mActionExtras":[
+            {
+                "first":"query",
+                "second":"Dual Core"
+            }
+        ]
+    }
+ ]

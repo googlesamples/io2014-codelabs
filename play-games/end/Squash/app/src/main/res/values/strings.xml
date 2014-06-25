@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Multisquash</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_reset">Reset</string>
+    <string name="menu_leaderboard">High Score</string>
+    <string name="menu_send_gift">Send Gift</string>
+    <string name="menu_gift_inbox">Gift Inbox</string>
+    <string name="menu_achievements">Achievements</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="play_game">Play Game</string>
+
+</resources>

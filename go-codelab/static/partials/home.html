@@ -1,0 +1,13 @@
+<h1 class='charcoal rounded-box'>
+    <span ng-show='!auth.User'>All the</span>
+    <span ng-show='auth.User'>Your</span>lists</h1>
+<ul class='grey rounded-box'>
+    <li ng-repeat='l in lists | orderBy:["Name"]'>
+        <a class='white rounded-box' href="/{{l.ID}}">{{l.Name}}</a>
+    </li>
+</ul>
+
+<form ng-submit='addList()' class='rounded-box grey'>
+    <input type='text' class='rounded-box' placeholder='new list name' ng-model='newList.Name'>
+    <input type='submit' class='white rounded-box' value='+'>
+</form>

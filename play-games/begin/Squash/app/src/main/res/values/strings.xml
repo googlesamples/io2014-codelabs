@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Squash</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_reset">Reset</string>
+    <string name="play_game">Play Game</string>
+    <string name="sign_out">Sign Out</string>
+
+</resources>

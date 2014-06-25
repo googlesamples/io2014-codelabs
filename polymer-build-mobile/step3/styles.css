@@ -1,0 +1,34 @@
+:host {
+  font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+}
+
+[drawer] {
+  background-color: #fff;
+}
+
+[main] > div {
+  padding: 2em;
+}
+
+[drawer] > core-item {
+  padding: 1em;
+}
+
+[main] paper-checkbox {
+  margin-right: 1em;
+}
+
+[main] {
+  height: 100%;
+  background-color: #f1f1f3;
+}
+
+[drawer] core-toolbar {
+  background-color: #4F7DC9;
+  color: #fff;
+}
+
+[main] core-toolbar {
+  background-color: #526E9C;
+  color: #fff;
+}

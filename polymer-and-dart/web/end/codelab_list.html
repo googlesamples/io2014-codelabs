@@ -1,0 +1,44 @@
+<link rel="import" href="codelab_form.html">
+<link rel="import" href="codelab_element.html">
+
+<polymer-element name="codelab-list">
+  <template>
+    <style>
+      select {
+        margin-bottom: 30px;
+        display: inline;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+      }
+    </style>
+    <div>
+      <label>Filter: </label>
+      <select value="{{filterValue}}" on-change="{{filter}}">
+        <option template repeat="{{filter in filters}}">
+          {{filter}}
+        </option>
+      </select>
+    </div>
+    <div on-codelabvalidated="{{addCodelab}}"
+         on-formnotneeded="{{resetForm}}">
+      <codelab-form codelab="{{newCodelab}}"></codelab-form>
+    </div>
+    <div on-deletecodelab="{{deleteCodelab}}"
+         on-levelchanged="{{filter}}">
+      <template repeat="{{codelab in filteredCodelabs}}">
+        <codelab-element codelab="{{codelab}}"></codelab-element>
+      </template>
+    </div>
+  </template>
+  <script type="application/dart" src="codelab_list.dart"></script>
+</polymer-element>

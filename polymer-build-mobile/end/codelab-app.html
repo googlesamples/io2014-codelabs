@@ -1,0 +1,122 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/font-roboto/roboto.html">
+<link rel="import" href="bower_components/core-drawer-panel/core-drawer-panel.html">
+<link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="bower_components/core-icons/core-icons.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="bower_components/paper-input/paper-input.html">
+<link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="bower_components/core-localstorage/core-localstorage.html">
+<link rel="import" href="bower_components/core-item/core-item.html">
+<link rel="import" href="bower_components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
+
+
+<polymer-element name="codelab-app">
+  <template>
+  <link rel="stylesheet" href="styles.css">
+  <core-drawer-panel responsiveWidth="600px" id="drawerPanel" narrow="{{narrow}}">
+
+    <core-header-panel drawer mode="waterfall">
+      <core-toolbar class="{{ {tall : !narrow} | tokenList }}">Menu</core-toolbar>
+      <core-item>
+        <label flex>Fade out selected</label>
+        <paper-toggle-button class="blue" checked="{{fadeSelected}}"></paper-toggle-button>
+      </core-item>
+      <core-item>
+        <label flex>Delete selected</label>
+        <paper-icon-button icon="delete" on-click="{{delete}}"></paper-icon-button>
+      </core-item>
+      <core-item>
+        <div center horizontal layout>
+          <div>Font size</div>
+          <paper-slider value="{{fontSize}}" max="32" editable></paper-slider>
+        </div>
+      </core-item>
+      <core-item>
+        <paper-button raisedButton class="colored" label="reset" on-click="{{reset}}"></paper-button>
+      </core-item>
+      <paper-toast id="toast" class="capsule" text="Setting are reset!" duration="800"></paper-toast>
+    </core-header-panel>
+
+    <core-header-panel main mode="waterfall">
+      <core-toolbar class="{{ {tall : !narrow} | tokenList }}">
+        <paper-icon-button icon="menu" on-click="{{toggleDrawer}}"></paper-icon-button>
+        <span flex>My notes</span>
+          <paper-icon-button icon="search"></paper-icon-button>
+          <paper-icon-button icon="more-vert"></paper-icon-button>
+          <paper-fab icon="icons:add" on-click="{{showNewNoteInput}}"></paper-fab>
+        </core-toolbar>
+        <div class="content" data-fade-selected="{{fadeSelected}}">
+          <paper-input id="newNoteInput"
+               floatingLabel
+               label="Add a new note"
+               on-change="{{add}}"
+             value="{{newNote}}"></paper-input>
+          <template repeat="{{data}}" >
+            <div center horizontal layout class="item" data-done="{{done}}">
+              <paper-checkbox checked="{{done}}" on-change="{{dataChanged}}"></paper-checkbox>
+              <div flex class="card paper-shadow-top-z-2">
+                <p>{{body}}</p>
+                <paper-ripple class="fit recenteringTouch"></paper-ripple>
+              </div>
+            </div>
+          </template>
+        </div>
+    </core-header-panel>
+
+  </core-drawer-panel>
+  <core-localstorage id="storage" name="codelab-app-storage" value="{{data}}"></core-localstorage>
+  <paper-shadow></paper-shadow>
+</template>
+<script>
+  Polymer('codelab-app', {
+    data: [],
+    fontSize: 14,
+    toggleDrawer: function() {
+      this.$.drawerPanel.togglePanel();
+    },
+    ready: function() {
+      this.$.newNoteInput.style.display = 'none';
+    },
+    showNewNoteInput: function() {
+      this.$.newNoteInput.style.display = 'block';
+    },
+    add: function() {
+      if (this.newNote) {
+        this.data.unshift({
+          body: this.newNote,
+          done: false
+        });
+        this.$.newNoteInput.style.display = 'none';
+        this.$.newNoteInput.value = null;
+      }
+    },
+    dataChanged: function() {
+      this.$.storage.save();
+    },
+    delete: function(e) {
+      this.data = this.data.filter(function(item) {
+        return !item.done;
+      })
+    },
+    fontSizeChanged: function() {
+      var cards = this.shadowRoot.querySelectorAll('.card');
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].style.fontSize = this.fontSize + 'px';
+      }
+    },
+    reset: function() {
+      this.fontSize = 14;
+      this.fadeSelected = false;
+      this.$.toast.show();
+    }
+  });
+</script>
+</polymer-element>
