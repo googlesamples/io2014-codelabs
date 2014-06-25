@@ -28,6 +28,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -46,6 +52,7 @@ public class ArtistActivity extends ActionBarActivity {
     private static final String TAG = ArtistActivity.class.getName();
     private Boolean mArtistInfoExpanded = false;
     private MyMusicStore.Artist mArtist = null;
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +64,11 @@ public class ArtistActivity extends ActionBarActivity {
         TextView songListHeaderView = (TextView) findViewById(R.id.song_list_header);
         ListView songListView = (ListView) findViewById(R.id.song_list);
         Button playButton = (Button) findViewById(R.id.play_button);
+
+        // Initialize the Google API client for the App Indexing API.
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(AppIndex.APP_INDEX_API)
+                .build();
 
         // Set up toggle expansion of the artist info block.
         artistInfoView.setOnClickListener(new View.OnClickListener() {
@@ -134,5 +146,71 @@ public class ArtistActivity extends ActionBarActivity {
         if (MediaPlayerService.mHasLaunched) {
             findViewById(R.id.playlist_fragment_container).setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Initiate a connection to the Google Api client.
+        mGoogleApiClient.connect();
+        // Since the App Indexing API is asynchronous, we don't need to worry about tracking
+        // the Google Api client's connection status, and this is also why we don't implement
+        // any of the connection callback methods.
+        recordAppIndexingView();
+    }
+
+    @Override
+    protected void onStop() {
+        recordAppIndexingViewEnd();
+        mGoogleApiClient.disconnect();
+        super.onStop();
+    }
+
+    // Use the App Indexing Api to record that this activity started to show this artist
+    // to the user. In this sample app, we just keep track of the result and post it to the console.
+    private void recordAppIndexingView() {
+        PendingResult<Status> result = AppIndex.AppIndexApi.view(
+                mGoogleApiClient,
+                ArtistActivity.this,
+                getIntent(),
+                mArtist.getName(),
+                Uri.parse(mArtist.getUrl()),
+                null);
+
+        result.setResultCallback(new ResultCallback<Status>() {
+            @Override
+            public void onResult(Status status) {
+                if (status.isSuccess()) {
+                    Log.d(TAG, "App Indexing API: Recorded artist "
+                            + mArtist.getName() + " view successfully.");
+                } else {
+                    Log.e(TAG, "App Indexing API: There was an error recording the artist view."
+                            + status.toString());
+                }
+            }
+        });
+
+    }
+
+    // Use the App Indexing Api to record that this activity stopped showing this artist
+    // to the user. In this sample app, we just keep track of the result and post it to the console.
+    private void recordAppIndexingViewEnd() {
+        PendingResult<Status> result = AppIndex.AppIndexApi.viewEnd(
+                mGoogleApiClient,
+                ArtistActivity.this,
+                getIntent());
+
+        result.setResultCallback(new ResultCallback<Status>() {
+            @Override
+            public void onResult(Status status) {
+                if (status.isSuccess()) {
+                    Log.d(TAG, "App Indexing API: Recorded artist "
+                            + mArtist.getName() + " view end successfully.");
+                } else {
+                    Log.e(TAG, "App Indexing API: There was an error recording the artist view."
+                            + status.toString());
+                }
+            }
+        });
     }
 }
