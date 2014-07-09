@@ -62,9 +62,10 @@
           <template repeat="{{data}}" >
             <div center horizontal layout class="item" data-done="{{done}}">
               <paper-checkbox checked="{{done}}" on-change="{{dataChanged}}"></paper-checkbox>
-              <div flex class="card paper-shadow-top-z-2">
+              <div flex class="card">
                 <p>{{body}}</p>
                 <paper-ripple class="fit recenteringTouch"></paper-ripple>
+                <paper-shadow z="2"></paper-shadow>
               </div>
             </div>
           </template>
@@ -73,7 +74,6 @@
 
   </core-drawer-panel>
   <core-localstorage id="storage" name="codelab-app-storage" value="{{data}}"></core-localstorage>
-  <paper-shadow></paper-shadow>
 </template>
 <script>
   Polymer('codelab-app', {
