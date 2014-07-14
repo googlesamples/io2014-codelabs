@@ -4,7 +4,7 @@ This is a sample code for the Google IO 2014 codelab
 Codelab instructions: http://io2014codelabs.appspot.com/static/codelabs/polymer-build-mobile/
 
 ***
-This code sample uses Bower to manage code dependencies. Plese run 
+This code sample uses [Bower](http://bower.io/) to manage code dependencies. Plese run 
 
     $ bower install
 
@@ -12,7 +12,8 @@ in each directory you wish to test before running the sample in the browser.
 ***
 
 ***
-Polymer requires files to be served over HTTP server rather than as local files. Run
+Polymer requires files to be served over HTTP server rather than as local files. 
+E.g. if you have python (2.x) installed, run
 
     $ python -m SimpleHTTPServer
 
