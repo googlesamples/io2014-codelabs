@@ -1,0 +1,22 @@
+This is a sample code for the Google IO 2014 codelab 
+"Polymer: Build a Material Design Mobile Web App with Paper Elements".
+
+Codelab instructions: http://io2014codelabs.appspot.com/static/codelabs/polymer-build-mobile/
+
+***
+This code sample uses [Bower](http://bower.io/) to manage code dependencies. Plese run 
+
+    $ bower install
+
+in each directory you wish to test before running the sample in the browser.
+***
+
+***
+Polymer requires files to be served over HTTP server rather than as local files. 
+E.g. if you have python (2.x) installed, run
+
+    $ python -m SimpleHTTPServer
+
+(or another server of your choice) to view the sample in the browser.
+*** 
+
