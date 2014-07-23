@@ -53,11 +53,7 @@ public class CayleyActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try {
-            getActionBar().setDisplayHomeAsUpEnabled(true);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_cayley);
         Intent intent = getIntent();
         intent.setAction(intent.getStringExtra(MainActivity.ACTION));
