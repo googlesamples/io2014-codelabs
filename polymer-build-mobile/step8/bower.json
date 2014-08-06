@@ -9,7 +9,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#master",
     "core-elements": "Polymer/core-elements#master",
-    "paper-elements": "Polymer/paper-elements",
-    "font-roboto": "Polymer/font-roboto"
+    "paper-elements": "Polymer/paper-elements#master",
+    "font-roboto": "Polymer/font-roboto#master"
   }
 }
