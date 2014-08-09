@@ -49,7 +49,9 @@
 </template>
 <script>
   Polymer('codelab-app', {
-    data: [],
+    created: function () {
+      this.data = [];
+    },
     toggleDrawer: function() {
       this.$.drawerPanel.togglePanel();
     },
